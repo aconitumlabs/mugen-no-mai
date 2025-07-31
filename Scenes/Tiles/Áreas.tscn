@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://bhd4l2wpjsc3w"]
 
 [ext_resource type="Texture2D" uid="uid://cyre15qjmyst" path="res://Assets/Hana Caraka - Topdown Tileset [sample]/Hana Caraka - Topdown Tileset [sample]/Tileset/Seasonal/spring.png" id="1_xpopg"]
-[ext_resource type="Texture2D" uid="uid://b3bsuyav7wa1" path="res://Assets/Grid (2).png" id="2_b3nsq"]
+[ext_resource type="Texture2D" uid="uid://b3bsuyav7wa1" path="res://Assets/Grid.png" id="2_b3nsq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bg661"]
 texture = ExtResource("1_xpopg")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3bsuyav7wa1"
-path="res://.godot/imported/Grid (2).png-0776671806f76f4ab63b734bc1234585.ctex"
+uid="uid://b65usk6u8fwt1"
+path="res://.godot/imported/Little purple fire.png-de17e597c3817ce338b28e05c58cc070.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Grid (2).png"
-dest_files=["res://.godot/imported/Grid (2).png-0776671806f76f4ab63b734bc1234585.ctex"]
+source_file="res://Assets/Little purple fire.png"
+dest_files=["res://.godot/imported/Little purple fire.png-de17e597c3817ce338b28e05c58cc070.ctex"]
 
 [params]
 
