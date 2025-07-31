@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://b4qfg63x7207j"]
+
+[ext_resource type="Script" uid="uid://4l8m2omei8ca" path="res://Scripts/Player.gd" id="1_5ixxa"]
+[ext_resource type="Texture2D" uid="uid://bf65e1hh6wh3o" path="res://Assets/2D Pixel Dungeon Asset Pack v2.0/2D Pixel Dungeon Asset Pack/Character_animation/priests_idle/priest1/v1/priest1_v1_1.png" id="1_dewec"]
+[ext_resource type="Texture2D" uid="uid://c2dww4tp6cblu" path="res://Assets/2D Pixel Dungeon Asset Pack v2.0/2D Pixel Dungeon Asset Pack/Character_animation/priests_idle/priest1/v1/priest1_v1_2.png" id="2_5ixxa"]
+[ext_resource type="Texture2D" uid="uid://c0vmc2kca3afu" path="res://Assets/2D Pixel Dungeon Asset Pack v2.0/2D Pixel Dungeon Asset Pack/Character_animation/priests_idle/priest1/v1/priest1_v1_3.png" id="3_nn08x"]
+[ext_resource type="Texture2D" uid="uid://uvr8qkkelmo7" path="res://Assets/2D Pixel Dungeon Asset Pack v2.0/2D Pixel Dungeon Asset Pack/Character_animation/priests_idle/priest1/v1/priest1_v1_4.png" id="4_52ee3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bhhdu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dewec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5ixxa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nn08x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_52ee3")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_megsn"]
+size = Vector2(14, 14)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_5ixxa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bhhdu")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_megsn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+position_smoothing_enabled = true
