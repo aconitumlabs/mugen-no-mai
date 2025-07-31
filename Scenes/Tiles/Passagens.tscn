@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=4 uid="uid://b8dcme85xpo4w"]
+
+[ext_resource type="Texture2D" uid="uid://baxfkwm4o2sig" path="res://Assets/Hana Caraka - Topdown Tileset [sample]/Hana Caraka - Topdown Tileset [sample]/Tileset/dirt.png" id="1_8fgep"]
+[ext_resource type="Texture2D" uid="uid://b3bsuyav7wa1" path="res://Assets/Grid.png" id="2_dyily"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yvkqr"]
+texture = ExtResource("1_8fgep")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_hbxg5"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_yvkqr")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ujue2"]
+texture = ExtResource("2_dyily")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_7s4yh"]
+sources/0 = SubResource("TileSetAtlasSource_ujue2")
+
+[node name="Caminhos" type="TileMapLayer"]
+tile_map_data = PackedByteArray("AAD/////AAABAAEAAAD//wAAAAABAAEAAAAAAP//AAABAAEAAAAAAAAAAAABAAEAAAD///7/AAABAAAAAAAAAP7/AAABAAAAAAABAP7/AAABAAAAAAD+//7/AAABAAAAAAABAAEAAAABAAIAAAAAAAEAAAABAAIAAAD//wEAAAABAAIAAAD+/wEAAAABAAIAAAD+////AAABAAEAAAD+/wAAAAABAAEAAAABAP//AAABAAEAAAABAAAAAAABAAEAAAA=")
+tile_set = SubResource("TileSet_hbxg5")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_7s4yh")
