@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-const GRID_SIZE := 16
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+const GRID_SIZE := 16
 
 var inputs = {
 	"Cima": Vector2.UP,
@@ -18,6 +19,11 @@ func  _ready():
 	#desativar_shader()
 
 func _unhandled_input(event):
+	
+	if event.is_action_pressed("interação "):
+		GameController.emit_signal("interact_pressed")
+		return
+	
 	if is_animating_jump:
 		return
 
