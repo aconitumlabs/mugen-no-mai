@@ -1,0 +1,161 @@
+[gd_scene load_steps=25 format=3 uid="uid://dbj6jnrn1hd77"]
+
+[ext_resource type="Shader" uid="uid://c2q28yj03rgng" path="res://shader/shader_glow.gdshader" id="1_y0884"]
+[ext_resource type="Texture2D" uid="uid://bna4x2xws8e1c" path="res://asset/Kitsune_Aura/Little purple fire.png" id="2_ibwsn"]
+[ext_resource type="Script" uid="uid://vei64h5yq0kc" path="res://entity/kitsune_particle/kitsune_particle.gd" id="3_sb44u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_amu7d"]
+shader = ExtResource("1_y0884")
+shader_parameter/rect_size = Vector2(0.5, 0.5)
+shader_parameter/bness = 5.0
+shader_parameter/fall_off_scale = 3.0
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmqas"]
+atlas = ExtResource("2_ibwsn")
+region = Rect2(0, 0, 1152, 1152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amu7d"]
+atlas = ExtResource("2_ibwsn")
+region = Rect2(1152, 0, 1152, 1152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vorq0"]
+atlas = ExtResource("2_ibwsn")
+region = Rect2(2304, 0, 1152, 1152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vivit"]
+atlas = ExtResource("2_ibwsn")
+region = Rect2(3456, 0, 1152, 1152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgbti"]
+atlas = ExtResource("2_ibwsn")
+region = Rect2(0, 1152, 1152, 1152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rkgv"]
+atlas = ExtResource("2_ibwsn")
+region = Rect2(1152, 1152, 1152, 1152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hx62h"]
+atlas = ExtResource("2_ibwsn")
+region = Rect2(2304, 1152, 1152, 1152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45mr3"]
+atlas = ExtResource("2_ibwsn")
+region = Rect2(3456, 1152, 1152, 1152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ni054"]
+atlas = ExtResource("2_ibwsn")
+region = Rect2(0, 2304, 1152, 1152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcvw8"]
+atlas = ExtResource("2_ibwsn")
+region = Rect2(1152, 2304, 1152, 1152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3d5ix"]
+atlas = ExtResource("2_ibwsn")
+region = Rect2(2304, 2304, 1152, 1152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6mtl"]
+atlas = ExtResource("2_ibwsn")
+region = Rect2(3456, 2304, 1152, 1152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bl8f3"]
+atlas = ExtResource("2_ibwsn")
+region = Rect2(0, 3456, 1152, 1152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkuh2"]
+atlas = ExtResource("2_ibwsn")
+region = Rect2(1152, 3456, 1152, 1152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpgjt"]
+atlas = ExtResource("2_ibwsn")
+region = Rect2(2304, 3456, 1152, 1152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5c762"]
+atlas = ExtResource("2_ibwsn")
+region = Rect2(3456, 3456, 1152, 1152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_366fc"]
+atlas = ExtResource("2_ibwsn")
+region = Rect2(0, 4608, 1152, 1152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7n6c"]
+atlas = ExtResource("2_ibwsn")
+region = Rect2(1152, 4608, 1152, 1152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cilaw"]
+atlas = ExtResource("2_ibwsn")
+region = Rect2(2304, 4608, 1152, 1152)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6t53a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmqas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amu7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vorq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vivit")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgbti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rkgv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hx62h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45mr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ni054")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcvw8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3d5ix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6mtl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bl8f3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pkuh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpgjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5c762")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_366fc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7n6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cilaw")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="KitsuneParticle" type="AnimatedSprite2D"]
+material = SubResource("ShaderMaterial_amu7d")
+scale = Vector2(0.02, 0.02)
+sprite_frames = SubResource("SpriteFrames_6t53a")
+animation = &"Idle"
+autoplay = "Idle"
+script = ExtResource("3_sb44u")
