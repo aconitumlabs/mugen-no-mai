@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4qfg63x7207j"]
+[gd_scene load_steps=12 format=3 uid="uid://b4qfg63x7207j"]
 
 [ext_resource type="Script" uid="uid://4l8m2omei8ca" path="res://entity/player/player.gd" id="1_5ixxa"]
 [ext_resource type="Texture2D" uid="uid://bf65e1hh6wh3o" path="res://asset/2D Pixel Dungeon Asset Pack v2.0/2D Pixel Dungeon Asset Pack/Character_animation/priests_idle/priest1/v1/priest1_v1_1.png" id="1_dewec"]
@@ -22,13 +22,86 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_52ee3")
 }],
-"loop": true,
+"loop": false,
 "name": &"Idle",
 "speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_megsn"]
 size = Vector2(14, 14)
+
+[sub_resource type="Animation" id="Animation_wjhpj"]
+resource_name = "walk"
+length = 0.2
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0166667, 0.0333333, 0.1, 0.166667, 0.183333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 1.2), Vector2(0, 0), Vector2(0, -4), Vector2(0, 0), Vector2(0, 1.2), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0166667, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.183333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.8), Vector2(0.8, 1), Vector2(0.6, 1), Vector2(1, 0.8), Vector2(0.6, 1), Vector2(0.8, 1), Vector2(1, 0.8), Vector2(1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_2iqu4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4btn6"]
+_data = {
+&"RESET": SubResource("Animation_2iqu4"),
+&"walk": SubResource("Animation_wjhpj")
+}
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_5ixxa")
@@ -47,3 +120,11 @@ zoom = Vector2(5, 5)
 position_smoothing_enabled = true
 
 [node name="KitsuneParticle" parent="." instance=ExtResource("6_wjhpj")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4btn6")
+}
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

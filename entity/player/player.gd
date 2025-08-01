@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-const GRID_SIZE := 16
+@export var animation_total_time := 0.2
+@export var GRID_SIZE := 16
 
 var inputs = {
 	"up": Vector2.UP,
@@ -11,20 +13,14 @@ var inputs = {
 	"right": Vector2.RIGHT
 }
 
-var is_animating_jump: bool = false
-var original_material: Material = null
+var tween
 
-func  _ready():
-	original_material = sprite.material
-	#desativar_shader()
-
-func _unhandled_input(event):
+func _ready() -> void:
+	animation_player.speed_scale = 1 / animation_total_time
 	
+func _input(event):
 	if event.is_action_pressed("interact1"):
 		GameController.emit_signal("interact_pressed")
-		return
-	
-	if is_animating_jump:
 		return
 
 	for action in inputs.keys():
@@ -37,54 +33,32 @@ func try_move(motion: Vector2) -> void:
 
 	if test_move(global_transform, motion):
 		return
-	if motion.x > 0:
-		sprite.flip_h = false
-	elif motion.x < 0:
-		sprite.flip_h = true
-	animate_jump(motion)
-	#ativar_shader()
 
-func animate_jump(motion: Vector2) -> void:
-	if is_animating_jump:
-		return
-	is_animating_jump = true
+	animate_walk(motion)
 
-	var start_pos = position
-	var end_pos = start_pos + motion
-	var total_time := 0.2
-	var half_time := total_time * 0.5
-
-	var t = get_tree().create_tween()
-
-	t.tween_property(sprite, "scale", Vector2(1.2, 0.8), half_time) \
-	 .set_trans(Tween.TransitionType.TRANS_SINE) \
-	 .set_ease(Tween.EaseType.EASE_OUT)
-	t.tween_property(sprite, "scale", Vector2.ONE, half_time) \
-	 .set_delay(half_time) \
-	 .set_trans(Tween.TransitionType.TRANS_SINE) \
-	 .set_ease(Tween.EaseType.EASE_IN)
-
-	t.tween_property(sprite, "position:y", -8, half_time) \
-	 .set_trans(Tween.TransitionType.TRANS_SINE) \
-	 .set_ease(Tween.EaseType.EASE_OUT)
-	t.tween_property(sprite, "position:y", 0, half_time) \
-	 .set_delay(half_time) \
-	 .set_trans(Tween.TransitionType.TRANS_SINE) \
-	 .set_ease(Tween.EaseType.EASE_IN)
-
-	t.parallel().tween_property(self, "position", end_pos, total_time) \
-	 .set_trans(Tween.TransitionType.TRANS_SINE) \
-	 .set_ease(Tween.EaseType.EASE_IN_OUT)
-
-	t.finished.connect(func():
-		is_animating_jump = false
-		sprite.scale = Vector2.ONE
-		sprite.position.y = 0
-		#desativar_shader()
-	)
-
-#func  ativar_shader():
-	#sprite.material = original_material
+func animate_walk(motion: Vector2) -> void:
+	sprite.stop()
+	if motion.x != 0:
+		sprite.flip_h = motion.x < 0
 	
-#func desativar_shader():
-	#sprite.material = null
+	animation_player.stop()
+	sprite.stop()
+	animation_player.play("walk", -1, animation_total_time/1, false)
+
+	if tween and tween.is_running():
+		tween.stop()
+		tween.custom_step(1.0) 
+		tween.kill()
+
+	var end_pos = position + motion
+
+	tween = create_tween()
+	tween.tween_property(self, "position", end_pos, animation_total_time) \
+		.set_trans(Tween.TransitionType.TRANS_SINE) \
+		.set_ease(Tween.EaseType.EASE_IN_OUT)
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	sprite.play("Idle")
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	sprite.play("Idle")
