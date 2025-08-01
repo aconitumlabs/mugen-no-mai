@@ -5,10 +5,10 @@ extends CharacterBody2D
 const GRID_SIZE := 16
 
 var inputs = {
-	"Cima": Vector2.UP,
-	"Baixo": Vector2.DOWN,
-	"Esquerda": Vector2.LEFT,
-	"Direita": Vector2.RIGHT
+	"up": Vector2.UP,
+	"down": Vector2.DOWN,
+	"left": Vector2.LEFT,
+	"right": Vector2.RIGHT
 }
 
 var is_animating_jump: bool = false
@@ -20,7 +20,7 @@ func  _ready():
 
 func _unhandled_input(event):
 	
-	if event.is_action_pressed("interação "):
+	if event.is_action_pressed("interact1"):
 		GameController.emit_signal("interact_pressed")
 		return
 	
