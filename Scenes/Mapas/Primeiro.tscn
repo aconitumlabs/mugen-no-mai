@@ -75,4 +75,4 @@ tile_set = SubResource("TileSet_jhiyk")
 position = Vector2(304, -47)
 
 [node name="TileMapLayer2" parent="Tiles/Salas Secretas" instance=ExtResource("4_bqli2")]
-position = Vector2(680, 96)
+position = Vector2(672, 96)
