@@ -15,6 +15,11 @@ function M.update(dt)
 end
 
 function M.draw()
+    love.graphics.print("hiii", 0, 0)
+    love.graphics.translate(
+        player.camera.x,
+        player.camera.y
+    )
     map.draw()
     player.draw()
 end
