@@ -1,3 +1,17 @@
+local game = require("src")
+
+function love.load()
+    game.load()
+end
+
+function love.update(dt)
+    game.update(dt)
+end
+
 function love.draw()
-    love.graphics.print("Hello World!", 400, 300)
+    game.draw()
+end
+
+function love.keypressed(key)
+    game.keypressed(key)
 end
