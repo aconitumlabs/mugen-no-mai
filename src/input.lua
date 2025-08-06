@@ -2,7 +2,7 @@ local M = {}
 
 local player = require("src.player")
 
-M.bind = {
+local bind = {
     left  = "h",
     down  = "j",
     up    = "k",
@@ -10,36 +10,41 @@ M.bind = {
     pan   = "lshift"
 }
 
-M.pressed = false
+local panningMouse = false
+
+local pressed = false
+
+M.zoom = 1
+
 
 function M.keypressed(key)
     local panning = false
-    if love.keyboard.isDown(M.bind.pan) then
+    if love.keyboard.isDown(bind.pan) then
         panning = true
     end
     local actions = {
-        [M.bind.left] = function()
+        [bind.left] = function()
             if panning then
                 player.camera.x = player.camera.x + player.cameraStep
             else
                 player.position.x = player.position.x - player.moveStep
             end
         end,
-        [M.bind.down] = function()
+        [bind.down] = function()
             if panning then
                 player.camera.y = player.camera.y - player.cameraStep
             else
                 player.position.y = player.position.y + player.moveStep
             end
         end,
-        [M.bind.up] = function()
+        [bind.up] = function()
             if panning then
                 player.camera.y = player.camera.y + player.cameraStep
             else
                 player.position.y = player.position.y - player.moveStep
             end
         end,
-        [M.bind.right] = function()
+        [bind.right] = function()
             if panning then
                 player.camera.x = player.camera.x - player.cameraStep
             else
@@ -53,7 +58,29 @@ function M.keypressed(key)
         currentAction()
     end
 
-    M.pressed = false
+    pressed = false
 end
 
+function M.mousepressed(x, y, button, istouch, presses)
+    if button == 1 then
+        panningMouse = true
+    end
+end
+
+function M.mousereleased(x, y, button, istouch, presses)
+    if button == 1 then
+        panningMouse = false
+    end
+end
+
+function M.mousemoved( x, y, dx, dy, istouch )
+    if panningMouse then
+        player.camera.x = player.camera.x + dx
+        player.camera.y = player.camera.y + dy
+    end
+end
+
+function M.wheelmoved(x,y)
+    M.zoom = math.max(M.zoom + 0.2 * y, 0)
+end
 return M
