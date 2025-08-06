@@ -1,5 +1,7 @@
 local M = {}
 
+local player = require("src.player")
+
 M.bind = {
     left  = "h",
     down  = "j",
@@ -11,15 +13,17 @@ M.pressed = false
 
 function M.keypressed(key)
     if key == M.bind.left then
-        M.pressed = true
-        print(M.pressed)
-        print(M.bind.left)
+        player.position.x = player.position.x - player.moveDistance
+
     elseif key == M.bind.down then
-        print(M.bind.down)
+        player.position.y = player.position.y + player.moveDistance
+
     elseif key == M.bind.up then
-        print(M.bind.up)
+        player.position.y = player.position.y - player.moveDistance
+
     elseif key == M.bind.right then
-        print(M.bind.right)
+        player.position.x = player.position.x + player.moveDistance
+
     end
 
     M.pressed = false

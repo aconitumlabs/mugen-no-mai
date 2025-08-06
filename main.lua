@@ -15,11 +15,3 @@ end
 function love.keypressed(key)
     game.keypressed(key)
 end
-
-function love.focus(f)
-    game.focus(f)
-end
-
-function love.quit()
-    game.quit()
-end

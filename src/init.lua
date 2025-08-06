@@ -1,32 +1,26 @@
 local M    = {}
 
-M.input    = require("src.input")
-M.map      = require("src.map")
-M.player   = require("src.player")
-M.constant = require("src.constant")
+local input    = require("src.input")
+local map      = require("src.map")
+local player   = require("src.player")
 
 function M.load()
+    player.load()
+    map.load()
 end
 
 function M.update(dt)
-    M.map.update(dt)
-    M.player.update(dt)
+    map.update(dt)
+    player.update(dt)
 end
 
 function M.draw()
-    M.map.draw()
-    M.player.draw()
+    map.draw()
+    player.draw()
 end
 
 function M.keypressed(key)
-    M.input.keypressed(key)
-end
-
-function M.focus(f)
-end
-
-function M.quit()
-
+    input.keypressed(key)
 end
 
 return M
