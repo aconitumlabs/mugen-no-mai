@@ -14,16 +14,19 @@ local panningMouse = false
 
 local pressed = false
 
-M.zoom = 1
+M.zoom = 2
 
 
 function M.keypressed(key)
+    player.currentAnimation = 1
+    player.animationTime = 0
     local panning = false
     if love.keyboard.isDown(bind.pan) then
         panning = true
     end
     local actions = {
         [bind.left] = function()
+            player.flip = false
             if panning then
                 player.camera.x = player.camera.x + player.cameraStep
             else
@@ -45,6 +48,7 @@ function M.keypressed(key)
             end
         end,
         [bind.right] = function()
+            player.flip = true
             if panning then
                 player.camera.x = player.camera.x - player.cameraStep
             else
