@@ -1,11 +1,17 @@
-local M        = {}
+local M      = {}
 
-M.position     = {
-    x = 1,
-    y = 1,
+M.position   = {
+    x = 0,
+    y = 0,
 }
 
-M.moveDistance = 50
+M.camera     = {
+    x = 0,
+    y = 0,
+}
+
+M.moveStep   = 50
+M.cameraStep = 20
 
 function M.load()
 
@@ -19,8 +25,8 @@ function M.draw(dt)
         "fill",
         M.position.x,
         M.position.y,
-        M.moveDistance,
-        M.moveDistance
+        M.moveStep,
+        M.moveStep
     )
 end
 
