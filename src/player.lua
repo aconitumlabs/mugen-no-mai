@@ -1,24 +1,24 @@
-local M          = {}
+local M                   = {}
 
-M.position       = {
+M.position                = {
     x = 0,
     y = 0,
 }
 
-M.camera         = {
+M.camera                  = {
     x = 0,
     y = 0,
 }
 
-M.moveStep       = 64
-M.cameraStep     = 20
+M.moveStep                = 64
+M.cameraStep              = 20
 
 local image
-local animations = {}
-M.currentAnimation = 1
-M.animationTime = 0
+local animations          = {}
 local animationSwitchTime = 0.5
-M.flip = false
+M.currentAnimation        = 1
+M.animationTime           = 0
+M.flip                    = false
 
 function M.load()
     image = love.graphics.newImage("asset/image/miko.png")
@@ -49,7 +49,6 @@ function M.draw(dt)
         xs = 1
         offset = 0
     end
-    print(M.position.x)
     love.graphics.draw(
         image,
         animations[M.currentAnimation],

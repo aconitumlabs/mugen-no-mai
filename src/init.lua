@@ -1,20 +1,18 @@
-local M      = {}
-
 local input  = require("src.input")
 local map    = require("src.map")
 local player = require("src.player")
 
-function M.load()
+function love.load()
     player.load()
     map.load()
 end
 
-function M.update(dt)
+function love.update(dt)
     map.update(dt)
     player.update(dt)
 end
 
-function M.draw()
+function love.draw()
     love.graphics.print("hiii", 0, 0)
     love.graphics.translate(
         player.camera.x,
@@ -25,24 +23,22 @@ function M.draw()
     player.draw()
 end
 
-function M.keypressed(key)
+function love.keypressed(key)
     input.keypressed(key)
 end
 
-function M.mousepressed(x, y, button, istouch, presses)
+function love.mousepressed(x, y, button, istouch, presses)
     input.mousepressed(x, y, button, istouch, presses)
 end
 
-function M.mousereleased(x, y, button, istouch, presses)
+function love.mousereleased(x, y, button, istouch, presses)
     input.mousereleased(x, y, button, istouch, presses)
 end
 
-function M.mousemoved(x, y, dx, dy, istouch)
+function love.mousemoved(x, y, dx, dy, istouch)
     input.mousemoved(x, y, dx, dy, istouch)
 end
 
-function M.wheelmoved(x, y)
+function love.wheelmoved(x, y)
     input.wheelmoved(x, y)
 end
-
-return M
