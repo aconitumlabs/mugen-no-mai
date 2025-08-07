@@ -12,10 +12,7 @@ local bind = {
 
 local panningMouse = false
 
-local pressed = false
-
 M.zoom = 2
-
 
 function M.keypressed(key)
     player.currentAnimation = 1
@@ -61,8 +58,6 @@ function M.keypressed(key)
     if currentAction ~= nil then
         currentAction()
     end
-
-    pressed = false
 end
 
 function M.mousepressed(x, y, button, istouch, presses)
@@ -77,14 +72,15 @@ function M.mousereleased(x, y, button, istouch, presses)
     end
 end
 
-function M.mousemoved( x, y, dx, dy, istouch )
+function M.mousemoved(x, y, dx, dy, istouch)
     if panningMouse then
         player.camera.x = player.camera.x + dx
         player.camera.y = player.camera.y + dy
     end
 end
 
-function M.wheelmoved(x,y)
+function M.wheelmoved(x, y)
     M.zoom = math.max(M.zoom + 0.2 * y, 0)
 end
+
 return M
