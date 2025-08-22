@@ -21,7 +21,7 @@ M.animationTime           = 0
 M.flip                    = false
 
 function M.load()
-    image = love.graphics.newImage("asset/image/miko.png")
+    image = love.graphics.newImage("res/image/miko.png")
     image:setFilter("nearest", "nearest")
     for i = 0, 128, 64 do
         table.insert(
